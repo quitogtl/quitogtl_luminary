@@ -21,9 +21,9 @@ function addOptions() {
                   <label for="options-font-size">Font Size</label>
                   <select id="options-font-size">
                       <option value="14">14</option>
-                      <option value="16" selected>16</option>
+                      <option value="16">16</option>
                       <option value="18">18</option>
-                      <option value="20">20</option>
+                      <option value="20" selected>20</option>
                       <option value="22">22</option>
                       <option value="24">24</option>
                       <option value="26">26</option>
@@ -34,9 +34,9 @@ function addOptions() {
               <div class="options-item">
                   <label for="options-font-family">Font Family</label>
                   <select id="options-font-family">
-                      <option value="Poppins">Poppins</option>
+                      <option value="Poppins" selected>Poppins</option>
                       <option value="Arial">Arial</option>
-                      <option value="Open Sans" selected>Open Sans</option>
+                      <option value="Open Sans">Open Sans</option>
                       <option value="Roboto">Roboto</option>
                       <option value="Georgia">Georgia</option>
                       <option value="Times New Roman">Times New Roman</option>
@@ -61,6 +61,7 @@ function addOptions() {
     optionSave.addEventListener('click', () => {
         localStorage.setItem('fontSize', document.querySelector('#options-font-size').value);
         localStorage.setItem('fontFamily', document.querySelector('#options-font-family').value);
+	window.wpmanga.setCookie('wpmanga-reading-fontsize', document.querySelector('#options-font-size').value, 30);
         document.querySelector('.options').classList.add('hidden');
     });
 
@@ -72,8 +73,8 @@ function addOptions() {
     });
 
     function loadOptions() {
-        const fontSize = localStorage.getItem('fontSize') || '16';
-        const fontFamily = localStorage.getItem('fontFamily') || 'Open Sans';
+        const fontSize = localStorage.getItem('fontSize') || '20';
+        const fontFamily = localStorage.getItem('fontFamily') || 'Poppins';
         document.querySelector('#options-font-size').value = fontSize;
         document.querySelector('#options-font-family').value = fontFamily;
         if (readingContent) {
