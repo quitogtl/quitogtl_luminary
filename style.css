@@ -6,9 +6,10 @@
   display: flex;
   flex-direction: column;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 13%;
   position: fixed;
   width: 275px;
+  z-index: 10000;
 }
 
 .options.hidden {
@@ -27,7 +28,10 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   height: 27px;
+  margin: 0;
+  padding: 0;
   width: 150px;
+  -webkit-appearance: menulist;
 }
 
 .options-item {
@@ -35,6 +39,11 @@
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
+}
+
+.options-item label {
+  font-size: 16px;
+  margin-bottom: 0;
 }
 
 .options hr {
@@ -75,6 +84,7 @@
   border-radius: 4px;
   color: white;
   cursor: pointer;
+  font-size: 13px;
   height: 30px;
   transition: background-color 0.3s ease;
   width: 65px;
