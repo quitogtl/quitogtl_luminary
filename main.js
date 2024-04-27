@@ -2,7 +2,7 @@ function addOptions() {
     const styleLink = document.createElement('link');
     styleLink.type = 'text/css';
     styleLink.rel = 'stylesheet';
-    styleLink.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.3/style.css';
+    styleLink.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.4/style.css';
     document.head.appendChild(styleLink);
 
     const fontAwesomeScript = document.createElement('script');
