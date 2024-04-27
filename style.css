@@ -7,7 +7,7 @@
   flex-direction: column;
   font-family: 'Open Sans', sans-serif;
   font-size: 13%;
-  position: fixed;
+  position: absolute;
   width: 275px;
   z-index: 10000;
 }
