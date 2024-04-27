@@ -1,10 +1,4 @@
 function addOptions() {
-  var link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.1/style.css';
-  document.head.appendChild(link);
-  
   const optionsHTML = `
       <div class="options hidden">
           <div class="options-header">
@@ -50,7 +44,7 @@ function addOptions() {
           </div>
       </div>
   `;
-  document.body.insertAdjacentHTML('afterbegin', optionsHTML);
+  document.body.insertAdjacentHTML('beforeend', optionsHTML);
 
   const readingContent = document.querySelector('.text-left');
   
@@ -96,11 +90,6 @@ function addOptions() {
   });
   
   loadOptions();
-  
-  const fontAwesomeScript = document.createElement('script');
-  fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
-  fontAwesomeScript.crossOrigin = "anonymous";
-  document.body.appendChild(fontAwesomeScript);
   
   const actionListIcon = document.querySelector('.action_list_icon');
   if (actionListIcon) {
@@ -159,6 +148,17 @@ function waitLoad(msgHTML) {
   
   observer.observe(document.body, {childList: true, subtree: true});
 };
+
+var link = document.createElement('link');
+link.type = 'text/css';
+link.rel = 'stylesheet';
+link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.2/style.css';
+document.head.appendChild(link);
+
+const fontAwesomeScript = document.createElement('script');
+fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
+fontAwesomeScript.crossOrigin = "anonymous";
+document.body.appendChild(fontAwesomeScript);
 
 const defaultMessage = '<a href="https://discord.com/invite/mVzkbcGHGU">Join the Luminary Novels Discord</a>';
 waitLoad(defaultMessage);
