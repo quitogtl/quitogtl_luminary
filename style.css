@@ -1,0 +1,122 @@
+.options {
+  background-color: #fafafa;
+  border: 1px solid #00000080;
+  border-radius: 7px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  position: fixed;
+  width: 275px;
+}
+
+.options.hidden {
+  display: none;
+}
+
+.options-body {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.options select {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  height: 27px;
+  width: 150px;
+}
+
+.options-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.options hr {
+  background-color: #888888;
+  border: none;
+  height: 1px;
+}
+
+.options-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.options-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.options-title i {
+  color: #5a349b;
+}
+
+.options-footer {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  margin: 0 10px 4px;
+}
+
+.options-footer button {
+  background-color: #5a349b;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  height: 30px;
+  transition: background-color 0.3s ease;
+  width: 65px;
+}
+
+.options-footer button:hover {
+  background-color: black;
+}
+
+.options-close-button {
+  align-items: center;
+  background-color: #ebebeb;
+  border: none;
+  border-radius: 50%;
+  color: #5a349b;
+  cursor: pointer;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  margin-right: 10px;
+  outline: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  width: 25px;
+}
+
+.options-close-button:hover {
+  background-color: #5a349b;
+  color: white;
+}
+
+.options-close-button i {
+  font-size: 15px;
+}
+
+/* Dark version */
+body.text-ui-light .options {
+  background-color: #212121;
+  color: white;
+}
+
+body.text-ui-light .options select {
+  background-color: #424242;
+  color: white;
+}
