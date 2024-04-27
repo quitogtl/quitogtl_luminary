@@ -79,6 +79,7 @@ function addOptions() {
         document.querySelector('#options-font-family').value = fontFamily;
         if (readingContent) {
             readingContent.style.fontSize = `${fontSize}px`;
+            readingContent.style.lineHeight = `${fontSize * 1.5}px`
             readingContent.style.fontFamily = fontFamily;
         } else {
             console.error('No element found with the class .text-left');
@@ -88,6 +89,7 @@ function addOptions() {
     document.querySelector('#options-font-size').addEventListener('change', (e) => {
         if (readingContent) {
             readingContent.style.fontSize = `${e.target.value}px`;
+            readingContent.style.lineHeight = `${e.target.value * 1.5}px`
         }
     });
     document.querySelector('#options-font-family').addEventListener('change', (e) => {
@@ -98,10 +100,10 @@ function addOptions() {
 
     loadOptions();
 	
-	const fontAwesomeScript = document.createElement('script');
-	fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
-	fontAwesomeScript.crossOrigin = "anonymous";
-	document.body.appendChild(fontAwesomeScript);
+    const fontAwesomeScript = document.createElement('script');
+    fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
+    fontAwesomeScript.crossOrigin = "anonymous";
+    document.body.appendChild(fontAwesomeScript);
 
     const actionListIcon = document.querySelector('.action_list_icon');
     if (actionListIcon) {
