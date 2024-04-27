@@ -129,36 +129,39 @@ function waitLoad(msgHTML) {
         warningElement.innerHTML = msgHTML;
     }
     
-    addOptions();
-    
     var _a = document.querySelector('.c-top-sidebar'); _a && (_a.style.display = "none");
     _a = document.querySelector('.text-left'); _a && (_a.style.userSelect = "none");
     _a = document.querySelector('#text-chapter-toolbar'); _a && (_a.style.display = "none");
     
     jQuery(function($) {$('.reading-content').off('click');});
+	
+   addOptions();
   };
   
-  const observer = new MutationObserver(() => {
-    const element = document.querySelector('.reading-content');
-    if (element) {
-      apply();
-      observer.disconnect();
-    }
-  });
-  
-  observer.observe(document.body, {childList: true, subtree: true});
+  if (document.querySelector('.text-left')) {
+    apply();
+  } else {
+    const observer = new MutationObserver(() => {
+      const element = document.querySelector('.text-left');
+      if (element) {
+        apply();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, {childList: true, subtree: true});
+  }
 };
 
 var link = document.createElement('link');
 link.type = 'text/css';
 link.rel = 'stylesheet';
-link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.2/style.css';
+link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.3/style.css';
 document.head.appendChild(link);
 
 const fontAwesomeScript = document.createElement('script');
 fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
 fontAwesomeScript.crossOrigin = "anonymous";
-document.body.appendChild(fontAwesomeScript);
+document.head.appendChild(fontAwesomeScript);
 
 const defaultMessage = '<a href="https://discord.com/invite/mVzkbcGHGU">Join the Luminary Novels Discord</a>';
 waitLoad(defaultMessage);
