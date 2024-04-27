@@ -1,15 +1,4 @@
 function addOptions() {
-    const styleLink = document.createElement('link');
-    styleLink.type = 'text/css';
-    styleLink.rel = 'stylesheet';
-    styleLink.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.4/style.css';
-    document.head.appendChild(styleLink);
-
-    const fontAwesomeScript = document.createElement('script');
-    fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
-    fontAwesomeScript.crossOrigin = "anonymous";
-    document.head.appendChild(fontAwesomeScript);
-
     const optionsHTML = `
       <div class="options hidden">
           <div class="options-header">
@@ -55,7 +44,7 @@ function addOptions() {
           </div>
       </div>
   `;
-    document.body.insertAdjacentHTML('beforeend', optionsHTML);
+    document.body.insertAdjacentHTML('afterbegin', optionsHTML);
 
     const readingContent = document.querySelector('.text-left');
 
@@ -130,6 +119,8 @@ function addOptions() {
 
 function waitLoad(msgHTML) {
     const apply = () => {
+        addOptions();
+        
         const warningElement = document.querySelector('.chapter-warning.alert.alert-warning');
         if (warningElement) {
             Object.assign(warningElement.style, {
@@ -149,8 +140,6 @@ function waitLoad(msgHTML) {
         jQuery(function($) {
             $('.reading-content').off('click');
         });
-
-        addOptions();
     };
 
     if (document.querySelector('.text-left')) {
