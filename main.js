@@ -2,11 +2,11 @@ function addOptions() {
 	var link = document.createElement('link');
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.12/style.css';
+	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.13/style.css';
 	document.head.appendChild(link);
 	
 	const optionsHTML = `
-	<div class="options-container hidden">
+	<div class="options-container">
 		<div class="options">
 			<div class="options-header">
 				<div class="options-title">
@@ -71,6 +71,9 @@ function addOptions() {
     document.body.insertAdjacentHTML('beforeend', optionsHTML);
 
     const readingContent = document.querySelector('.text-left');
+	if (readingContent) {
+        readingContent.classList.add('custom');
+    }
 
     const optionClose = document.querySelector('.options-close-button');
     optionClose.addEventListener('click', () => document.querySelector('.options-container').classList.add('hidden'));
@@ -80,7 +83,7 @@ function addOptions() {
         localStorage.setItem('fontSize', document.querySelector('#options-font-size').value);
         localStorage.setItem('fontFamily', document.querySelector('#options-font-family').value);
 		localStorage.setItem('lineHeight', document.querySelector('#options-line-height').value);
-	window.wpmanga.setCookie('wpmanga-reading-fontsize', document.querySelector('#options-font-size').value, 30);
+
         document.querySelector('.options-container').classList.add('hidden');
     });
 
@@ -93,37 +96,35 @@ function addOptions() {
     });
 
 	function loadOptions() {
+		// Retrieve settings from localStorage or use default values
 		const fontSize = localStorage.getItem('fontSize') || '20';
 		const fontFamily = localStorage.getItem('fontFamily') || 'Poppins';
 		const lineHeight = localStorage.getItem('lineHeight') || '1.5';
+
+		// Update the select elements in the options panel
 		document.querySelector('#options-font-size').value = fontSize;
 		document.querySelector('#options-font-family').value = fontFamily;
 		document.querySelector('#options-line-height').value = lineHeight;
-		if (readingContent) {
-			readingContent.style.fontSize = `${fontSize}px`;
-			readingContent.style.lineHeight = `${parseInt(fontSize) * parseFloat(lineHeight)}px`;
-			readingContent.style.fontFamily = fontFamily;
-		} else {
-			console.error('No element found with the class .text-left');
-		}
+
+		// Set CSS properties on the root HTML element
+		document.documentElement.style.setProperty('--text-font-size', `${fontSize}px`);
+		document.documentElement.style.setProperty('--text-font-family', fontFamily);
+		document.documentElement.style.setProperty('--text-line-height', `${lineHeight}em`);
 	}
 
     document.querySelector('#options-font-size').addEventListener('change', (e) => {
         if (readingContent) {
-            readingContent.style.fontSize = `${e.target.value}px`;
-			const lineHeight = parseFloat(document.querySelector('#options-line-height').value);
-			readingContent.style.lineHeight = `${parseInt(e.target.value) * lineHeight}px`;
+            document.documentElement.style.setProperty('--text-font-size', `${e.target.value}px`);
         }
     });
     document.querySelector('#options-font-family').addEventListener('change', (e) => {
         if (readingContent) {
-            readingContent.style.fontFamily = e.target.value;
+            document.documentElement.style.setProperty('--text-font-family', e.target.value);
         }
     });
 	document.querySelector('#options-line-height').addEventListener('change', (e) => {
 		if (readingContent) {
-			const fontSize = parseInt(document.querySelector('#options-font-size').value);
-			readingContent.style.lineHeight = `${fontSize * parseFloat(e.target.value)}px`;
+			document.documentElement.style.setProperty('--text-line-height', `${e.target.value}em`);
 		}
 	});
 
