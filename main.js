@@ -5,91 +5,114 @@ function addOptions() {
 	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.8/style.css';
 	document.head.appendChild(link);
 	
-    const optionsHTML = `
-      <div class="options hidden">
-          <div class="options-header">
-              <div class="options-title">
-                  <i class="fa-solid fa-gear"></i> Options
-              </div>
-              <button class="options-close-button">
-                  <i class="fa-solid fa-xmark"></i>
-              </button>
-          </div>
+	const optionsHTML = `
+	<div class="options-container">
+		<div class="options">
+			<div class="options-header">
+				<div class="options-title">
+					<i class="fa-solid fa-gear"></i> Options
+				</div>
+				<button class="options-close-button">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+			<div class="options-body">
+				<div class="options-item">
+					<label for="options-font-size">Font Size</label>
+					<select id="options-font-size">
+						<option value="14">14</option>
+						<option value="16">16</option>
+						<option value="18">18</option>
+						<option value="20" selected>20</option>
+						<option value="22">22</option>
+						<option value="24">24</option>
+						<option value="26">26</option>
+						<option value="28">28</option>
+					</select>
+				</div>
+				<div class="options-item">
+					<label for="options-font-family">Font Family</label>
+					<select id="options-font-family">
+						<option value="Poppins" selected>Poppins</option>
+						<option value="Arial">Arial</option>
+						<option value="Open Sans">Open Sans</option>
+						<option value="Roboto">Roboto</option>
+						<option value="Georgia">Georgia</option>
+						<option value="Times New Roman">Times New Roman</option>
+					</select>
+				</div>
+				<div class="options-item">
+					<label for="options-line-height">Line Height</label>
+					<select id="options-line-height">
+						<option value="1.0">1.0x</option>
+						<option value="1.25">1.25x</option>
+						<option value="1.5" selected>1.5x</option>
+						<option value="1.75">1.75x</option>
+						<option value="2.0">2.0x</option>
+						<option value="2.25">2.25x</option>
+						<option value="2.5">2.5x</option>
+						<option value="2.75">2.75x</option>
+						<option value="3.0">3.0x</option>
+					</select>
+				</div>
+			</div>
+			<div class="options-footer">
+				<button class="options-reset-button">
+					<i class="fa-solid fa-rotate-right"></i> Reset
+				</button>
+				<button class="options-save-button">
+					<i class="fa-solid fa-floppy-disk"></i> Save
+				</button>
+			</div>
+		</div>
+	</div>
+	`;
 
-          <div class="options-body">
-              <div class="options-item">
-                  <label for="options-font-size">Font Size</label>
-                  <select id="options-font-size">
-                      <option value="14">14</option>
-                      <option value="16">16</option>
-                      <option value="18">18</option>
-                      <option value="20" selected>20</option>
-                      <option value="22">22</option>
-                      <option value="24">24</option>
-                      <option value="26">26</option>
-                      <option value="28">28</option>
-                  </select>
-              </div>
-
-              <div class="options-item">
-                  <label for="options-font-family">Font Family</label>
-                  <select id="options-font-family">
-                      <option value="Poppins" selected>Poppins</option>
-                      <option value="Arial">Arial</option>
-                      <option value="Open Sans">Open Sans</option>
-                      <option value="Roboto">Roboto</option>
-                      <option value="Georgia">Georgia</option>
-                      <option value="Times New Roman">Times New Roman</option>
-                  </select>
-              </div>
-          </div>
-
-          <div class="options-footer">
-              <button class="options-reset-button"><i class="fa-solid fa-rotate-right"></i> Reset</button>
-              <button class="options-save-button"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-          </div>
-      </div>
-  `;
     document.body.insertAdjacentHTML('beforeend', optionsHTML);
 
     const readingContent = document.querySelector('.text-left');
 
     const optionClose = document.querySelector('.options-close-button');
-    optionClose.addEventListener('click', () => document.querySelector('.options').classList.add('hidden'));
+    optionClose.addEventListener('click', () => document.querySelector('.options-container').classList.add('hidden'));
 
     const optionSave = document.querySelector('.options-save-button');
     optionSave.addEventListener('click', () => {
         localStorage.setItem('fontSize', document.querySelector('#options-font-size').value);
         localStorage.setItem('fontFamily', document.querySelector('#options-font-family').value);
+		localStorage.setItem('lineHeight', document.querySelector('#options-line-height').value);
 	window.wpmanga.setCookie('wpmanga-reading-fontsize', document.querySelector('#options-font-size').value, 30);
-        document.querySelector('.options').classList.add('hidden');
+        document.querySelector('.options-container').classList.add('hidden');
     });
 
     const optionReset = document.querySelector('.options-reset-button');
     optionReset.addEventListener('click', () => {
         localStorage.removeItem('fontSize');
         localStorage.removeItem('fontFamily');
+		localStorage.removeItem('lineHeight');
         loadOptions();
     });
 
-    function loadOptions() {
-        const fontSize = localStorage.getItem('fontSize') || '20';
-        const fontFamily = localStorage.getItem('fontFamily') || 'Poppins';
-        document.querySelector('#options-font-size').value = fontSize;
-        document.querySelector('#options-font-family').value = fontFamily;
-        if (readingContent) {
-            readingContent.style.fontSize = `${fontSize}px`;
-            readingContent.style.lineHeight = `${fontSize * 1.5}px`
-            readingContent.style.fontFamily = fontFamily;
-        } else {
-            console.error('No element found with the class .text-left');
-        }
-    }
+	function loadOptions() {
+		const fontSize = localStorage.getItem('fontSize') || '20';
+		const fontFamily = localStorage.getItem('fontFamily') || 'Poppins';
+		const lineHeight = localStorage.getItem('lineHeight') || '1.5';
+		document.querySelector('#options-font-size').value = fontSize;
+		document.querySelector('#options-font-family').value = fontFamily;
+		document.querySelector('#options-line-height').value = lineHeight;
+		if (readingContent) {
+			readingContent.style.fontSize = `${fontSize}px`;
+			readingContent.style.lineHeight = `${parseInt(fontSize) * parseFloat(lineHeight)}px`;
+			readingContent.style.fontFamily = fontFamily;
+		} else {
+			console.error('No element found with the class .text-left');
+		}
+	}
 
     document.querySelector('#options-font-size').addEventListener('change', (e) => {
         if (readingContent) {
             readingContent.style.fontSize = `${e.target.value}px`;
-            readingContent.style.lineHeight = `${e.target.value * 1.5}px`
+			const lineHeight = parseFloat(document.querySelector('#options-line-height').value);
+			readingContent.style.lineHeight = `${parseInt(e.target.value) * lineHeight}px`;
         }
     });
     document.querySelector('#options-font-family').addEventListener('change', (e) => {
@@ -97,6 +120,12 @@ function addOptions() {
             readingContent.style.fontFamily = e.target.value;
         }
     });
+	document.querySelector('#options-line-height').addEventListener('change', (e) => {
+		if (readingContent) {
+			const fontSize = parseInt(document.querySelector('#options-font-size').value);
+			readingContent.style.lineHeight = `${fontSize * parseFloat(e.target.value)}px`;
+		}
+	});
 
     loadOptions();
 	
@@ -120,9 +149,9 @@ function addOptions() {
         const btnOptions = newListItem.querySelector('.btn-options');
         if (btnOptions) {
             btnOptions.addEventListener('click', function() {
-                const optionElement = document.querySelector('.options');
-                if (optionElement) {
-                    optionElement.classList.toggle('hidden');
+                const optionContainerElement = document.querySelector('.options-container');
+                if (optionContainerElement) {
+                    optionContainerElement.classList.toggle('hidden');
                 } else {
                     console.error("No options element found!");
                 }
