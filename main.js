@@ -2,13 +2,13 @@ function addOptions() {
 	var link = document.createElement('link');
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.13/style.css';
+	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.14/style.css';
 	document.head.appendChild(link);
 	
 	const optionsHTML = `
 	<div class="options-container">
 		<div class="options">
-			<div class="options-header">
+			<div class="options-header hidden">
 				<div class="options-title">
 					<i class="fa-solid fa-gear"></i> Options
 				</div>
