@@ -2,7 +2,7 @@ function addOptions() {
 	var link = document.createElement('link');
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.15/style.css';
+	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.16/style.css';
 	document.head.appendChild(link);
 	
 	const optionsHTML = `
@@ -10,10 +10,10 @@ function addOptions() {
 		<div class="options">
 			<div class="options-header">
 				<div class="options-title">
-					<i class="fa-solid fa-gear"></i> Options
+					<i class="icon ion-md-settings"></i> Options
 				</div>
 				<button class="options-close-button">
-					<i class="fa-solid fa-xmark"></i>
+					<i class="icon ion-md-close"></i>
 				</button>
 			</div>
 			<div class="options-body">
@@ -58,10 +58,10 @@ function addOptions() {
 			</div>
 			<div class="options-footer">
 				<button class="options-reset-button">
-					<i class="fa-solid fa-rotate-right"></i> Reset
+					<i class="icon ion-ios-refresh"></i> Reset
 				</button>
 				<button class="options-save-button">
-					<i class="fa-solid fa-floppy-disk"></i> Save
+					<i class="icon ion-md-save"></i> Save
 				</button>
 			</div>
 		</div>
@@ -129,11 +129,6 @@ function addOptions() {
 	});
 
     loadOptions();
-	
-    const fontAwesomeScript = document.createElement('script');
-    fontAwesomeScript.src = "https://kit.fontawesome.com/f4dbd03345.js";
-    fontAwesomeScript.crossOrigin = "anonymous";
-    document.body.appendChild(fontAwesomeScript);
 
     const actionListIcon = document.querySelector('.action_list_icon');
     if (actionListIcon) {
