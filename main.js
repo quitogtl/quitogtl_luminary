@@ -2,7 +2,7 @@ function addOptions() {
 	var link = document.createElement('link');
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.16/style.css';
+	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.17/style.css';
 	document.head.appendChild(link);
 	
 	const optionsHTML = `
@@ -165,6 +165,11 @@ function waitLoad(msgHTML) {
                 borderColor: "#00000012"
             });
             warningElement.innerHTML = msgHTML;
+			
+		    const tlNote = document.querySelector('#tl-note');
+		    if (tlNote) {
+				warningElement.innerHTML = msgHTML + "<br>" + tlNote.innerHTML;
+			}
         }
 
         var _a = document.querySelector('.c-top-sidebar');
