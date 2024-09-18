@@ -156,6 +156,6 @@ body.text-ui-light .options select {
   color: white;
 }
 
-#tl-note, .text-left > div, ins{
+#tl-note, .text-left > div, ins, div[dir='ltr']{
   display: none !important;
 }
