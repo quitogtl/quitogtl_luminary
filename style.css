@@ -159,3 +159,7 @@ body.text-ui-light .options select {
 #tl-note {
   display: none;
 }
+
+.text-left > div {
+    display:none;
+}
