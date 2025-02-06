@@ -2,7 +2,7 @@ function addOptions() {
 	var link = document.createElement('link');
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.22/style.css';
+	link.href = 'https://cdn.jsdelivr.net/gh/quitogtl/quitogtl_luminary@1.0.23/style.css';
 	document.head.appendChild(link);
 	
 	const optionsHTML = `
