@@ -156,6 +156,22 @@ body.text-ui-light .options select {
   color: white;
 }
 
-#tl-note, .text-left > div, ins, div[dir='ltr']{
+#tl-note, .text-left > div, ins, div[dir='ltr'], .sidebar-col{
   display: none !important;
+}
+
+.main-col.col-12.col-sm-8.col-md-8.col-lg-8 {
+  background-color: #262626;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  color-scheme: light;
+  padding: 20px;
+  box-shadow: 0 0 10px 1px rgb(38 38 38);
+}
+
+.main-col.col-12.col-sm-8.col-md-8.col-lg-8 * {
+    color: white
 }
