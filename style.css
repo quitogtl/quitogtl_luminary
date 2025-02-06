@@ -156,7 +156,7 @@ body.text-ui-light .options select {
   color: white;
 }
 
-#tl-note, .text-left > div, ins, div[dir='ltr'], .sidebar-col, iframe[sandbox~="allow-forms"][sandbox~="allow-popups"] {
+#tl-note, .text-left > div, ins, ins *, div[dir='ltr'], .sidebar-col, iframe[sandbox~="allow-forms"][sandbox~="allow-popups"] {
   display: none !important;
 }
 
